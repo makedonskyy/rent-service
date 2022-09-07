@@ -14,4 +14,15 @@ route.get('/', async (req, res) => {
   }
 });
 
+route.get('/categories', async (req, res) => {
+  try {
+    const initState = { path: req.originalUrl };
+    const html = renderToString(<Layout initState={initState} />);
+    res.write('<!DOCTYPE html>');
+    res.end(html);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 export default route;
