@@ -130,6 +130,7 @@ body {
 	box-shadow: 0 0 5px #1eff45, 0 0 15px #1eff45, 0 0 30px #1eff45,
 		0 0 60px #1eff45;
 }
+<<<<<<< HEAD
 /* //////////////////////////// */
 ul {
 	list-style: none;
@@ -216,3 +217,6 @@ h1:hover::after {
 	color: hotpink;
 	font-size: 1.75rem;
 }  */
+=======
+
+>>>>>>> ca5c7dbae85517be01891cdbff7051e14f3f8efe
