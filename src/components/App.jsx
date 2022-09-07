@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Categories from './Categories';
 import Main from './pages/Main';
 
 export default function App() {
@@ -7,6 +8,7 @@ export default function App() {
     <div>
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/categories" element={<Categories />} />
       </Routes>
     </div>
   );
