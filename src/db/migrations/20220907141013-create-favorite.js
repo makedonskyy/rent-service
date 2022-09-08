@@ -1,3 +1,4 @@
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Favorites', {
@@ -33,9 +34,27 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+        type: Sequelize.INTEGER
+      },
+      userId: {
+        type: Sequelize.INTEGER
+      },
+      appartmentId: {
+        type: Sequelize.INTEGER
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Favorites');
+
   },
 };
+

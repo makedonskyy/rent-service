@@ -7,6 +7,15 @@ const route = express.Router();
 
 route.get('/', async (req, res) => {
   try {
+    const initState = { path: req.originalUrl,};
+    res.render('Layout', initState);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+route.get('/categories', async (req, res) => {
+  try {
     const initState = { path: req.originalUrl };
     const html = renderToString(<Layout initState={initState} />);
     res.write('<!DOCTYPE html>');
