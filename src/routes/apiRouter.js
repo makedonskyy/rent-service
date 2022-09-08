@@ -88,6 +88,7 @@ router.post('/addAppartment', async (req, res) => {
 router.get('/logout', (req, res) => {
   req.session.destroy();
   res.clearCookie('user_sid');
+  res.sendStatus(200)
 });
 
 export default router;
