@@ -6,7 +6,7 @@ export default function AllAppartments({ appartments }) {
   // console.log(appArray);
   useEffect(() => {
     if (!appArray) {
-      fetch('/categories/appartments')
+      fetch('/api/v1/categories/appartments')
         .then((res) => res.json())
         .then((data) => setappArray(data));
     }

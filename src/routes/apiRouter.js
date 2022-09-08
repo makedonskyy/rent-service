@@ -22,11 +22,12 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-// router.get('/categories/appartments', async (req, res) => {
-//   const allAppartment = await Appartment.findAll({ where: { cathegoryId: 1 } });
-//   const initState = { path: req.originalUrl, allAppartment };
-//   res.render('Layout', initState);
-// });
+router.get('/categories/appartments', async (req, res) => {
+  const allAppartment = await Appartment.findAll({ where: { cathegoryId: 1 } });
+  const initState = { path: req.originalUrl, allAppartment };
+  res.render('Layout', initState);
+  res.json(allAppartment)
+});
 
 router.get('/categories/appartments/:id', async (req, res) => {
   const { id } = req.params;

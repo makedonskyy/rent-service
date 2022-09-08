@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export default function OneApp({ appartmentId }) {
-  // const [app, setApp] = useState(appartmentId || null);
+export default function OneApp({ appartmentId, oneAppartment }) {
+  const [app, setApp] = useState(oneAppartment || null);
   // console.log(appartmentId);
-  // const { appId } = useParams();
-  // useEffect(() => {
-  //   fetch(`/categories/appartments/${appId}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setApp(data));
-  // }, []);
+  const { appId } = useParams();
+  useEffect(() => {
+    fetch(`/api/v1/categories/appartments/${appId}`)
+      .then((res) => res.json())
+      .then((data) => setApp(data));
+  }, []);
   return (
     <div>
-      {appartmentId && (
+      {app && (
       <>
         <div className="row">
           <div className="col-2">
-            <h2>{appartmentId?.cathegoryId}</h2>
+            <h2>{app?.cathegoryId}</h2>
           </div>
           <div className="col-4">
             <img src={app?.image} className="card-img-top" alt="..." />

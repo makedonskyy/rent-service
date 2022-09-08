@@ -42,7 +42,8 @@ route.get('/categories', async (req, res) => {
 
 route.get('/categories/appartments', async (req, res) => {
   try {
-    res.render('Layout');
+    const initState = { path: req.originalUrl };
+    res.render('Layout', initState);
   } catch (error) {
     console.error(error);
   }
@@ -50,7 +51,10 @@ route.get('/categories/appartments', async (req, res) => {
 
 route.get('/categories/appartments/:id', async (req, res) => {
   try {
-    res.render('Layout');
+    const { id } = req.params;
+    const oneAppartment = await Appartment.findByPk(id);
+    const initState = { path: req.originalUrl, oneAppartment };
+    res.render('Layout', initState);
   } catch (error) {
     console.error(error);
   }

@@ -7,14 +7,14 @@ import Main from './pages/Main';
 import AllAppartments from './pages/AllAppartments';
 import OneAppartment from './pages/OneAppartment';
 
-export default function App({ allAppartment, appartmentId }) {
+export default function App({ allAppartment, appartmentId, oneAppartment }) {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/appartments" element={<AllAppartments appartments={allAppartment} />} />
-        <Route path="/categories/appartments/:appId" element={<OneAppartment appartment={appartmentId} />} />
+        <Route path="/categories/appartments/:appId" element={<OneAppartment oneAppartment={oneAppartment} appartment={appartmentId} />} />
         <Route path="/login" element={<SignUp />} />
       </Routes>
       <Footer />
