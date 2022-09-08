@@ -12,7 +12,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	background: linear-gradient(to bottom, #5d326c, #350048); /*fiolet*/
+	background: linear-gradient(to bottom, #8a7b92, #8d70a2); /*fiolet*/
 }
 .container {
 	width: 1000px;
@@ -114,21 +114,21 @@ body {
 }
 .container .btn:nth-child(1)::before, /*chnage 1*/
 .container .btn:nth-child(1)::after {
-	background: #ff1f71;
-	box-shadow: 0 0 5px #ff1f71, 0 0 15px #ff1f71, 0 0 30px #ff1f71,
-		0 0 60px #ff1f71;
+	background: #d59fcb;
+	box-shadow: 0 0 5px rgb(213, 159, 203), 0 0 15px #d59fcb, 0 0 30px #d59fcb,
+		0 0 60px #d59fcb;
 }
 .container .btn:nth-child(2)::before, /* 2*/
 .container .btn:nth-child(2)::after {
-	background: #2db2ff;
-	box-shadow: 0 0 5px #2db2ff, 0 0 15px #2db2ff, 0 0 30px #2db2ff,
-		0 0 60px #2db2ff;
+	background: #d59fcb;
+	box-shadow: 0 0 5px #d59fcb, 0 0 15px #d59fcb, 0 0 30px #d59fcb,
+		0 0 60px #d59fcb;
 }
 .container .btn:nth-child(3)::before, /* 3*/
 .container .btn:nth-child(3)::after {
-	background: #1eff45;
-	box-shadow: 0 0 5px #1eff45, 0 0 15px #1eff45, 0 0 30px #1eff45,
-		0 0 60px #1eff45;
+	background: #d59fcb;
+	box-shadow: 0 0 5px #d59fcb, 0 0 15px #d59fcb, 0 0 30px #d59fcb,
+		0 0 60px #d59fcb;
 }
 
 ul {
@@ -194,6 +194,54 @@ map {
 	padding-right: 30px;
 }
 
+.button-34 {
+	background: #d59fcb;
+	border-radius: 999px;
+	box-shadow: #d59fcb 0 10px 20px -10px;
+	box-sizing: border-box;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 24px;
+	opacity: 1;
+	outline: 0 solid transparent;
+	padding: 8px 18px;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	width: fit-content;
+	word-break: break-word;
+	border: 0;
+  }
+  
+  .button-51:before {
+	background-color: #D5EDF6;
+	content: "";
+	height: calc(100% + 3px);
+	position: absolute;
+	right: -7px;
+	top: -9px;
+	transition: background-color 300ms ease-in;
+	width: 100%;
+	z-index: -1;
+  }
+  
+  .button-51:hover:before {
+	background-color: #f66dcd;
+  }
+
+  .strong {
+	display: flex;	
+	justify-content: center;
+  }
+  
+  @media (min-width: 768px) {
+	.button-51 {
+	  padding: 16px 32px;
+	}
+  }
 
 /*  links sidebar CSS  */
 /* ._social-links {
