@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Categories from './Categories';
 import Footer from './Footer';
+
+import Header from './Header';
+
 import SignUp from './login/SignUp';
+
 import Main from './pages/Main';
 
-export default function App() {
+export default function App({ userSession }) {
+  const [authState, setAuthState] = useState(userSession || null);
+
   return (
     <div>
+      <Header />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/categories" element={<Categories />} />
