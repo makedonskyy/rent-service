@@ -40,9 +40,5 @@ route.get('/categories', async (req, res) => {
   }
 });
 
-route.get('/categories/appartments', async (req, res) => {
-  const allAppartment = await Appartment.findAll();
-  res.json(allAppartment);
-});
 
 export default route;

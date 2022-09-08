@@ -5,14 +5,14 @@ export default function AllAppartments({ appartment }) {
   const [appArray, setappArray] = useState(appartment || null);
   useEffect(() => {
     if (!appArray) {
-      fetch('/api/v1/students')
+      fetch('/categories/appartments')
         .then((res) => res.json())
-        .then((data) => setStudentsArray(data));
+        .then((data) => setappArray(data));
     }
   }, []);
   return (
     <div className="row">
-      {studentsArray ? studentsArray.map((el) => <StudentCard student={el} key={el.id} />) : 'No students'}
+      {appArray ? appArray.map((el) => <StudentCard appartment={el} key={el.id} />) : 'Пока ничего не добавлено'}
     </div>
   );
 }

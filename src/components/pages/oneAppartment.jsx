@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function OneApp({ appartment }) {
   const [app, setApp] = useState(appartment || null);
   const { appId } = useParams();
   useEffect(() => {
-    fetch(`/api/v1//categories/appartments${appId}`)
+    fetch(`/categories/appartments/appartments/${appId}`)
       .then((res) => res.json())
       .then((data) => setApp(data));
   }, []);
