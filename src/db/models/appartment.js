@@ -1,7 +1,9 @@
-'use strict';
+
 const {
-  Model
+  Model,
 } = require('sequelize');
+
+
 module.exports = (sequelize, DataTypes) => {
   class Appartment extends Model {
     /**
@@ -9,8 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+
+    static associate({ Owner, Cathegory }) {
       // define association here
+      this.belongsTo(Owner, { foreignKey: 'ownerId' });
+      this.belongsTo(Cathegory, { foreignKey: 'cathegoryId' });
     }
   }
   Appartment.init({
@@ -20,10 +25,14 @@ module.exports = (sequelize, DataTypes) => {
     countOfRooms: DataTypes.INTEGER,
     address: DataTypes.STRING,
     description: DataTypes.TEXT,
-    image: DataTypes.STRING
+
+    image: DataTypes.STRING,
+
   }, {
     sequelize,
     modelName: 'Appartment',
   });
   return Appartment;
+
 };
+
