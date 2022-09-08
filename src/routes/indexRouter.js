@@ -14,7 +14,7 @@ route.get('/', async (req, res) => {
   }
 });
 
-route.get('/signup', (req, res) => {
+route.get('/user/signup', (req, res) => {
   try {
     res.render('Layout');
   } catch (error) {
@@ -32,10 +32,7 @@ route.get('/login', (req, res) => {
 
 route.get('/categories', async (req, res) => {
   try {
-    const initState = { path: req.originalUrl };
-    const html = renderToString(<Layout initState={initState} />);
-    res.write('<!DOCTYPE html>');
-    res.end(html);
+    res.render('Layout');
   } catch (err) {
     console.error(err);
   }

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function SignUp() {
+export default function OwnerSignUp() {
   const [input, setInput] = useState({
-    name: '', email: '', password: '', description: '',
+    name: '', email: '', password: '', phone: '',
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ export default function SignUp() {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/v1/user/signup', {
+    const response = await fetch('/api/v1/owner/signup', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -48,8 +48,8 @@ export default function SignUp() {
       </div>
       <div className="mb-3">
         <label htmlFor="exampleInputPassword1" className="form-label">
-          Description
-          <input value={input.description} onChange={inputHandler} name="description" type="text" className="form-control" id="exampleInputPassword1" />
+          Phone
+          <input value={input.phone} onChange={inputHandler} name="phone" type="text" className="form-control" id="exampleInputPassword1" />
         </label>
       </div>
       <button type="submit" className="btn btn-primary">Submit</button>
