@@ -3,14 +3,20 @@ import { MDBFooter } from 'mdb-react-ui-kit';
 
 export default function Footer() {
   return (
-    <MDBFooter bgColor="light" className="text-center text-lg-left">
+    <MDBFooter
+      bgColor="light"
+      className="text-center text-lg-left"
+      style={{
+        width: '100vw !important',
+      }}
+    >
       <div
         className="text-center p-3"
         style={{
           backgroundColor: 'rgba(0, 0, 0, 0.2)',
           position: 'fixed',
           bottom: 0,
-          width: '100%',
+          width: '100vw',
           height: '100px',
           color: 'white',
         }}

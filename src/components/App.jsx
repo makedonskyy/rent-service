@@ -4,12 +4,13 @@ import Categories from './Categories';
 import Footer from './Footer';
 import Main from './pages/Main';
 
-export default function App() {
+export default function App({ allAppartment }) {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/categories" element={<Categories />} />
+        <Route path="/categories/appartments" element={<App appartment={allAppartment} />} />
       </Routes>
       <Footer />
       <div>
