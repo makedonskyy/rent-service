@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-function Header({ authState, setAuthState }) {
+export default function Header({ authState, setAuthState }) {
   const navigate = useNavigate();
 
   const logoutHandler = async (e) => {
@@ -70,5 +70,3 @@ function Header({ authState, setAuthState }) {
     </nav>
   );
 }
-
-export default Header;

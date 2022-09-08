@@ -4,7 +4,7 @@ import { User, Owner } from '../db1/models';
 
 const router = express.Router();
 
-router.post('/user/signup', async (req, res) => {
+router.post('/signup/user', async (req, res) => {
   try {
     const {
       name, email, password, description,
@@ -21,13 +21,21 @@ router.post('/user/signup', async (req, res) => {
   }
 });
 
-router.post('/user/login', async (req, res) => {
+router.post('/login/user', async (req, res) => {
   const { email, password } = req.body;
   const currUser = await User.findOne({ where: { email } });
-  
+  const compare = await bcrypt.compare(password, currUser.password);
+  if (compare) {
+    req.session.userId = currUser.id;
+    req.session.userEmail = currUser.email;
+    res.sendStatus(200);
+    // res.json({ name: currUser.login });
+  } else {
+    res.sendStatus(401);
+  }
 });
 
-router.post('/owner/signup', async (req, res) => {
+router.post('/signup/owner', async (req, res) => {
   try {
     const {
       name, email, password, phone,
@@ -44,9 +52,23 @@ router.post('/owner/signup', async (req, res) => {
   }
 });
 
-// router.get('/students', async (req, res) => {
-// const allStudents = await Student.findAll();
-// res.json(allStudents);
-// });
+router.post('/login/owner', async (req, res) => {
+  const { email, password } = req.body;
+  const currUser = await Owner.findOne({ where: { email } });
+  const compare = await bcrypt.compare(password, currUser.password);
+  if (compare) {
+    req.session.userId = currUser.id;
+    req.session.userEmail = currUser.email;
+    res.sendStatus(200);
+    // res.json({ name: currUser.login });
+  } else {
+    res.sendStatus(401);
+  }
+});
+
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.clearCookie('user_sid');
+});
 
 export default router;
