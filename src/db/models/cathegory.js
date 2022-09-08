@@ -1,8 +1,6 @@
-
 const {
   Model,
 } = require('sequelize');
-
 
 module.exports = (sequelize, DataTypes) => {
   class Cathegory extends Model {
@@ -24,6 +22,4 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Cathegory',
   });
   return Cathegory;
-
 };
-

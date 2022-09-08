@@ -1,8 +1,6 @@
-
 const {
   Model,
 } = require('sequelize');
-
 
 module.exports = (sequelize, DataTypes) => {
   class Appartment extends Model {
@@ -25,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     countOfRooms: DataTypes.INTEGER,
     address: DataTypes.STRING,
     description: DataTypes.TEXT,
-
     image: DataTypes.STRING,
 
   }, {
@@ -33,6 +30,4 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Appartment',
   });
   return Appartment;
-
 };
-
