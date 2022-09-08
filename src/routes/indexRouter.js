@@ -2,7 +2,7 @@ import express from 'express';
 // import { renderToString } from 'react-dom/server';
 // import React from 'react';
 // import Layout from '../components/Layout';
-import { Appartment } from '../db/models';
+import { Appartment, Cathegory } from '../db1/models';
 
 const route = express.Router();
 
@@ -40,5 +40,20 @@ route.get('/categories', async (req, res) => {
   }
 });
 
+route.get('/categories/appartments', async (req, res) => {
+  try {
+    res.render('Layout');
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+route.get('/categories/appartments/:id', async (req, res) => {
+  try {
+    res.render('Layout');
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 export default route;

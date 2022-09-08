@@ -1,7 +1,7 @@
 import express from 'express';
 
 import bcrypt from 'bcrypt';
-import { User, Appartment } from '../db/models';
+import { User, Appartment, Cathegory } from '../db1/models';
 
 const router = express.Router();
 
@@ -22,14 +22,16 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-router.get('/categories/appartments', async (req, res) => {
-  const allAppartment = await Appartment.findAll();
-  res.json(allAppartment);
-});
+// router.get('/categories/appartments', async (req, res) => {
+//   const allAppartment = await Appartment.findAll({ where: { cathegoryId: 1 } });
+//   const initState = { path: req.originalUrl, allAppartment };
+//   res.render('Layout', initState);
+// });
 
 router.get('/categories/appartments/:id', async (req, res) => {
   const { id } = req.params;
   const oneAppartment = await Appartment.findByPk(id);
+  req.session.appartId = oneAppartment;
   res.json(oneAppartment);
 });
 
