@@ -491,6 +491,10 @@ h1:hover::after {
 	width: 120%;
 	outline: 5px solid rgb(2, 0, 36);
 }
+map {
+	width: 500px;
+	height: 300px;
+}
 
 .collapse {
 	display: flex;

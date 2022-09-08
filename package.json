@@ -35,11 +35,13 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
+    "@2gis/mapgl": "^1.30.0",
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
+    "mapql": "^0.0.10",
     "mdb-react-ui-kit": "^4.2.0",
     "pg": "^8.8.0",
     "pg-hstore": "^2.3.4",
