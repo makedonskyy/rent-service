@@ -1,6 +1,6 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
-import { User, Owner } from '../db1/models';
+import { User, Owner, Appartment } from '../db1/models';
 
 const router = express.Router();
 
@@ -63,6 +63,25 @@ router.post('/login/owner', async (req, res) => {
     // res.json({ name: currUser.login });
   } else {
     res.sendStatus(401);
+  }
+});
+
+router.post('/addAppartment', async (req, res) => {
+  try {
+    const {
+      cathegory, price, countOfRooms, address, description, image,
+    } = req.body;
+    const newUser = await Appartment.create({
+      cathegory,
+      price,
+      countOfRooms,
+      address,
+      description,
+      image,
+    });
+    res.sendStatus(200);
+  } catch (err) {
+    console.log(err);
   }
 });
 
