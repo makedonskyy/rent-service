@@ -54,15 +54,15 @@ export default function Header({ authState, setAuthState }) {
                   {authState.email}
                 </li>
                 <li className="pipe-separate c-white left">
-                  <a onClick={logoutHandler} className="nav-link" href="">logout</a>
+                  <Link to="/logout" onClick={logoutHandler} className="nav-link">Logout</Link>
                 </li>
               </>
             )
               : (
-                <>
-                  <li className="pipe-separate c-white left"><Link to="/registration">register</Link></li>
-                  <li className="pipe-separate c-white left"><Link to="/auth">login</Link></li>
-                </>
+                <div className="strong">
+                  <li className="pipe-separate c-white left"><button type="button" style={{ marginRight: '5px' }} className="button-34"><Link to="/signup">register</Link></button></li>
+                  <li className="pipe-separate c-white left"><button type="button" className="button-34"><Link to="/login">login</Link></button></li>
+                </div>
               )}
           </ul>
         </div>

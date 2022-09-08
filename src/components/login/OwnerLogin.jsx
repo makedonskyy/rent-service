@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
+export default function OwnerLogin() {
   const [input, setInput] = useState({
     email: '', password: '',
   });
@@ -12,7 +12,7 @@ export default function Login() {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/v1/login/user', {
+    const response = await fetch('/api/v1/login/owner', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
