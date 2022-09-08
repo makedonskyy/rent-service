@@ -437,9 +437,6 @@ a.c-white:hover {
 	background-color: #fefefe;
 }
 
-<<<<<<< HEAD
-
-/* //////////////////////////// */
 ul {
 	list-style: none;
 }
@@ -492,6 +489,7 @@ h1:hover::after {
 	outline: 5px solid rgb(2, 0, 36);
 }
 
+
 .collapse {
 	display: flex;
 	justify-content: space-between;
@@ -505,7 +503,6 @@ h1:hover::after {
 	padding-right: 30px;
 }
 
-/* //////////////////////////// */
 
 /*  links sidebar CSS  */
 /* ._social-links {
@@ -543,4 +540,9 @@ h1:hover::after {
 	color: hotpink;
 	font-size: 1.75rem;
 }  */
-=======>>>>>>>ca5c7dbae85517be01891cdbff7051e14f3f8efe
+
+map {
+	width: 500px;
+	height: 300px;
+}
+
