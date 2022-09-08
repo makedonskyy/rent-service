@@ -14,7 +14,23 @@ route.get('/', async (req, res) => {
   }
 });
 
-route.get('/user/signup', (req, res) => {
+route.get('/signup', (req, res) => {
+  try {
+    res.render('Layout');
+  } catch (error) {
+    console.error('Ошибка в регистрации,', error);
+  }
+});
+
+route.get('/signup/user', (req, res) => {
+  try {
+    res.render('Layout');
+  } catch (error) {
+    console.error('Ошибка в регистрации,', error);
+  }
+});
+
+route.get('/signup/owner', (req, res) => {
   try {
     res.render('Layout');
   } catch (error) {
@@ -23,6 +39,22 @@ route.get('/user/signup', (req, res) => {
 });
 
 route.get('/login', (req, res) => {
+  try {
+    res.render('Layout');
+  } catch (error) {
+    console.error('Ошибка во входе,', error);
+  }
+});
+
+route.get('/login/user', (req, res) => {
+  try {
+    res.render('Layout');
+  } catch (error) {
+    console.error('Ошибка во входе,', error);
+  }
+});
+
+route.get('/login/owner', (req, res) => {
   try {
     res.render('Layout');
   } catch (error) {
