@@ -32,8 +32,13 @@ app.use(express.static('public'));
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(session(sessionConfig)); 
-//gkygjmygjthyt
+app.use(session(sessionConfig));
+
+app.use((req, res, next) => {
+  res.locals.path = req.originalUrl;
+  res.locals.userName = req.session?.userName;
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/api/v1', apiRouter);
