@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AddAppartment from './AddAppartment';
 import Categories from './Categories';
@@ -8,6 +8,7 @@ import SignUp from './login/SignUp';
 import Main from './pages/Main';
 
 export default function App() {
+  const [authState, setAuthState] = useState('');
   return (
     <div>
       <Header />
