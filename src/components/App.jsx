@@ -3,7 +3,12 @@ import { Route, Routes } from 'react-router-dom';
 import Categories from './Categories';
 import Footer from './Footer';
 import Header from './Header';
+import Login from './login/Login';
+import LoginMain from './login/LoginMain';
+import OwnerLogin from './login/OwnerLogin';
+import OwnerSignUp from './login/OwnerSignUp';
 import SignUp from './login/SignUp';
+import SignUpMain from './login/SignUpMain';
 import Main from './pages/Main';
 
 export default function App() {
@@ -13,14 +18,14 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/categories" element={<Categories />} />
-        <Route path="/login" element={<SignUp />} />
+        <Route path="/login" element={<LoginMain />} />
+        <Route path="/login/user" element={<Login />} />
+        <Route path="/login/owner" element={<OwnerLogin />} />
+        <Route path="/signup" element={<SignUpMain />} />
+        <Route path="/signup/owner" element={<OwnerSignUp />} />
+        <Route path="/signup/user" element={<SignUp />} />
       </Routes>
       <Footer />
-      <div>
-        {' '}
-        <button type="button"><a href="/categories">Press</a></button>
-        <button type="button"><a href="/login">Log</a></button>
-      </div>
     </div>
 
   );

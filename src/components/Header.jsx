@@ -60,8 +60,8 @@ export default function Header({ authState, setAuthState }) {
             )
               : (
                 <>
-                  <li className="pipe-separate c-white left"><Link to="/registration">register</Link></li>
-                  <li className="pipe-separate c-white left"><Link to="/auth">login</Link></li>
+                  <li className="pipe-separate c-white left"><Link to="/signup">register</Link></li>
+                  <li className="pipe-separate c-white left"><Link to="/login">login</Link></li>
                 </>
               )}
           </ul>
