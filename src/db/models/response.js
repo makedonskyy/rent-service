@@ -1,8 +1,6 @@
-
 const {
   Model,
 } = require('sequelize');
-
 
 module.exports = (sequelize, DataTypes) => {
   class Response extends Model {
@@ -16,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(Appartment, { foreignKey: 'appartmentId' });
       this.belongsTo(User, { foreignKey: 'userId' });
-
     }
   }
   Response.init({
@@ -29,6 +26,4 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Response',
   });
   return Response;
-
 };
-

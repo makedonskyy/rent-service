@@ -1,8 +1,6 @@
-
 const {
   Model,
 } = require('sequelize');
-
 
 module.exports = (sequelize, DataTypes) => {
   class Owner extends Model {
@@ -17,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(Appartment, {
         foreignKey: 'ownerId',
       });
-
     }
   }
   Owner.init({
@@ -32,6 +29,4 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Owner',
   });
   return Owner;
-
 };
-
