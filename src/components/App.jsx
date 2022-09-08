@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import AddAppartment from './AddAppartment';
 import Categories from './Categories';
 import Footer from './Footer';
 import Header from './Header';
@@ -11,7 +12,8 @@ export default function App() {
     <div>
       <Header />
       <Routes>
-        <Route path="/" element={<Main />} />
+        {/* <Route path="/" element={<Main />} /> */}
+        <Route path="/" element={<AddAppartment />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/login" element={<SignUp />} />
       </Routes>
