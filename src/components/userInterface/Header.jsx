@@ -18,7 +18,8 @@ export default function Header({ authState, setAuthState }) {
     if (authState.ownerOrUser === 'user') {
       favorites = (<a className="link" href="/favorites"><button type="button" className="button-34">Избранное</button></a>);
     } else if (authState.ownerOrUser === 'owner') {
-      favorites = (<a className="link" href="/myapartments"><button type="button" className="button-34">Мои объявления</button></a>);
+
+      favorites = (<Link to="/myapartments" className="c-white nav-item nav-link"><button type="button" className="button-34">Мои объявления</button></Link>);
     } else favorites = (<></>);
   } else {
     favorites = (<></>);
@@ -33,23 +34,31 @@ export default function Header({ authState, setAuthState }) {
         width: '100vw',
         height: '85px',
         fontSize: '20px',
+
       }}
     >
-      <a className="navbar-brand" href="/">Rent Service</a>
+      <Link to="/" className="navbar-brand">Rent Service</Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon" />
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav">
+
+        <div
+          className="navbar-nav"
+          style={{
+            display: 'flex', alignItems: 'center',
+          }}
+        >
           <button type="button" className="button-34"><Link to="/categories">Категории</Link></button>
+
           {favorites}
         </div>
         <div className="login">
-          <ul className="no-bullets no-margin no-padding right">
+          <ul className="no-bullets no-margin no-padding right" style={{ display: 'flex' }}>
             {console.log(authState)}
             {authState ? (
               <>
-                <li className="pipe-separate c-white left">
+                <li className="pipe-separate c-white left" style={{ marginRight: '25px' }}>
                   Привет,
                   {' '}
                   {authState.name}

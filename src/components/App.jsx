@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AddAppartment from './pages/AddAppartment';
 import Categories from './pages/Categories';
@@ -17,19 +17,26 @@ import AllHouses from './pages/AllHouses';
 import OneHouse from './pages/OneHouse';
 import AllRooms from './pages/AllRooms';
 import OneRoom from './pages/OneRoom';
-
 import OwnerApart from './pages/OwnerApart';
-
 import Map from './Map';
+import EditCard from './userInterface/EditCard';
 
 export default function App({
-  allAppartments, oneAppartment, allHouses, oneHouse, allRooms, oneRoom, myApart, userOrOwner,
+  allAppartments, oneAppartment, allHouses, oneHouse,
+  allRooms, oneRoom, myApart, userOrOwner, maApart,
 }) {
   const [authState, setAuthState] = useState('');
-  
+  // console.log(authState);
+  // useEffect(() => {
+  //   if (!authState) {
+  //     fetch('/api/v1/')
+  //       .then((res) => res.json())
+  //       .then((data) => setStudentsArray(data));
+  //   }
+  // }, []);
   return (
     <div>
-      <Header authState={authState} setAuthState={setAuthState} />
+      {/* <Header authState={authState} setAuthState={setAuthState} /> */}
       <Routes>
         <Route path="/" element={<Main />} />
         {/* <Route path="/" element={<Map />} /> */}
@@ -48,8 +55,10 @@ export default function App({
         <Route path="/signup/user" element={<SignUp authState={authState} setAuthState={setAuthState} />} />
         <Route path="/apartform" element={<AddAppartment />} />
         <Route path="/myapartments" element={<OwnerApart myApart={myApart} />} />
+        <Route path="/myapartments/update/:id" element={<EditCard maApart={maApart} />} />
+
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

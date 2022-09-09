@@ -1,11 +1,41 @@
 import express from 'express';
 
 import bcrypt from 'bcrypt';
+import axios from 'axios';
 import {
   User, Appartment, Cathegory, Owner,
 } from '../db1/models';
 
+// const fetch = require('node-fetch');
+
 const router = express.Router();
+
+router.post('/coordinates', async (req, res) => {
+  try {
+    const { address } = req.body;
+    const url = 'https://cleaner.dadata.ru/api/v1/clean/address';
+    const token = '8abf2516c963dfbfe7e8033ee347b1a9420b60e8';
+    const secret = 'b54649db1261aab4bfc4c828656fa8670a524bac';
+    const query = address ?? 'москва сухонская 11';
+
+    const options = {
+      url: 'https://cleaner.dadata.ru/api/v1/clean/address',
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Token ${token}`,
+        'X-Secret': secret,
+      },
+      data: JSON.stringify([query]),
+    };
+
+    const response = await axios(options);
+    res.json({ lat: response.data[0].geo_lat, lon: response.data[0].geo_lon });
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 router.post('/signup/user', async (req, res) => {
   try {
@@ -109,13 +139,27 @@ router.post('/login/owner', async (req, res) => {
   }
 });
 
-// router.get('/myapartments/update/:id', async (req, res) => {
-//   try {
-//     res.render('Layout');
-//   } catch (error) {
-//     console.error(error);
-//   }
-// })
+router.post('/myapartments/update/:id', async (req, res) => {
+  try {
+    const { userId } = req.session;
+    const myFlat = await Cathegory.findOne({ where: { id: req.params.id } });
+    const {
+      cathegory, price, countOfRooms, address, description,
+    } = req.body;
+    myFlat.cathegory = cathegory;
+    myFlat.price = price;
+    myFlat.countOfRooms = countOfRooms;
+    myFlat.address = address;
+    myFlat.description = description;
+    myFlat.ownerId = userId;
+    req.session.maApart = myFlat;
+    myFlat.save();
+    // req.session.myApart = myFlat;
+    return res.redirect('/myapartments');
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 router.get('/categories/appartments', async (req, res) => {
   const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 } });
@@ -143,8 +187,8 @@ router.post('/apartform', async (req, res) => {
       cathegory, price, countOfRooms, address, description, image,
     } = req.body;
     const { userId } = req.session;
-    console.log(userId);
-    console.log(req.session.userId);
+    // console.log(userId);
+    // console.log(req.session.userId);
     const newUser = await Appartment.create({
       cathegoryId: cathegory,
       ownerId: userId,
@@ -163,8 +207,18 @@ router.post('/apartform', async (req, res) => {
 router.get('/logout', (req, res) => {
   req.session.destroy();
   res.clearCookie('user_sid');
-
   res.sendStatus(200);
+});
+
+router.delete('/myapartments/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Appartment.destroy({ where: { id } });
+    res.sendStatus(201);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
 });
 
 export default router;
