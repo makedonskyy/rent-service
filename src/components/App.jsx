@@ -17,6 +17,7 @@ import AllHouses from './pages/AllHouses';
 import OneHouse from './pages/OneHouse';
 import AllRooms from './pages/AllRooms';
 import OneRoom from './pages/OneRoom';
+import Map from './Map';
 
 export default function App({
   allAppartments, oneAppartment, allHouses, oneHouse, allRooms, oneRoom,
@@ -26,7 +27,8 @@ export default function App({
     <div>
       <Header authState={authState} setAuthState={setAuthState} />
       <Routes>
-        <Route path="/" element={<Main />} />
+        {/* <Route path="/" element={<Main />} /> */}
+        <Route path="/" element={<Map />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/appartments" element={<AllAppartments appartments={allAppartments} />} />
         <Route path="/categories/appartments/:appId" element={<OneAppartment oneAppartment={oneAppartment} />} />
