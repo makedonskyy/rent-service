@@ -93,6 +93,15 @@ router.post('/login/owner', async (req, res) => {
   }
 });
 
+
+// router.get('/myapartments/update/:id', async (req, res) => {
+//   try {
+//     res.render('Layout');
+//   } catch (error) {
+//     console.error(error);
+//   }
+// })
+
 router.get('/categories/appartments', async (req, res) => {
   const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 } });
   // const initState = { path: req.originalUrl, allAppartments };
@@ -132,6 +141,8 @@ router.post('/apartform', async (req, res) => {
     console.log(err);
   }
 });
+
+
 
 router.get('/logout', (req, res) => {
   req.session.destroy();

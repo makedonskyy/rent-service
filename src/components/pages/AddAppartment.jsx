@@ -12,7 +12,7 @@ export default function AddAppartment() {
   const changeHandler = (e) => setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   const submitHandler = async (event) => {
     event.preventDefault();
-    const response = await fetch('/api/v1/addAppartment', {
+    const response = await fetch('/api/v1/apartform', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(input),

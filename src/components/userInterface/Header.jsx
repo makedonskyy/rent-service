@@ -18,7 +18,7 @@ export default function Header({ authState, setAuthState }) {
     if (authState.ownerOrUser === 'user') {
       favorites = (<a className="c-white nav-item nav-link" href="/favorites">Избранное</a>);
     } else if (authState.ownerOrUser === 'owner') {
-      favorites = (<a className="c-white nav-item nav-link" href="/myHouses">Мои объявления</a>);
+      favorites = (<a className="c-white nav-item nav-link" href="/myapartments">Мои объявления</a>);
     } else favorites = (<></>);
   } else {
     favorites = (<></>);
