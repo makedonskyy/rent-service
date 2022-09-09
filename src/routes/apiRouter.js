@@ -44,6 +44,7 @@ router.get('/categories/houses', async (req, res) => {
   // res.render('Layout', initState);
   res.json(allHouses);
 });
+
 router.post('/login/user', async (req, res) => {
   const { email, password } = req.body;
   const currUser = await User.findOne({ where: { email } });
@@ -91,6 +92,27 @@ router.post('/login/owner', async (req, res) => {
     res.sendStatus(401);
   }
 });
+
+router.get('/categories/appartments', async (req, res) => {
+  const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 } });
+  // const initState = { path: req.originalUrl, allAppartments };
+  // res.render('Layout', initState);
+  res.json(allAppartments);
+});
+
+router.get('/categories/appartments/:id', async (req, res) => {
+  const { id } = req.params;
+  const oneAppartment = await Appartment.findByPk(id);
+  res.json(oneAppartment);
+});
+
+router.get('/categories/houses', async (req, res) => {
+  const allHouses = await Appartment.findAll({ where: { cathegoryId: 3 } });
+  // const initState = { path: req.originalUrl, allHouses };
+  // res.render('Layout', initState);
+  res.json(allHouses);
+});
+
 
 router.post('/apartform', async (req, res) => {
   try {
