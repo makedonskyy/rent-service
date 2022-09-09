@@ -9,6 +9,7 @@ import apiRouter from './routes/apiRouter';
 import jsxRender from './components/utils/jsxRender';
 import { Appartment, Cathegory, Owner } from './db1/models';
 
+
 dotenv.config();
 
 require('dotenv').config();
@@ -42,7 +43,11 @@ app.use(async (req, res, next) => {
   res.locals.allHouses = allRooms;
   res.locals.path = req.originalUrl;
   res.locals.userName = req.session?.userName;
-
+  res.locals.ownerId = req.session.userId;
+  const myApart = await Appartment.findAll({
+    where: { ownerId: res.locals.ownerId },
+  });
+  res.locals.myApart = myApart;
   next();
 });
 app.use(express.static('public'));

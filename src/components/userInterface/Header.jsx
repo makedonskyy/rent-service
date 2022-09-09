@@ -18,7 +18,7 @@ export default function Header({ authState, setAuthState }) {
     if (authState.ownerOrUser === 'user') {
       favorites = (<a className="c-white nav-item nav-link" href="/favorites">Избранное</a>);
     } else if (authState.ownerOrUser === 'owner') {
-      favorites = (<a className="c-white nav-item nav-link" href="/myHouses">Мои объявления</a>);
+      favorites = (<a className="c-white nav-item nav-link" href="/myapartments">Мои объявления</a>);
     } else favorites = (<></>);
   } else {
     favorites = (<></>);
@@ -51,7 +51,7 @@ export default function Header({ authState, setAuthState }) {
                 <li className="pipe-separate c-white left">
                   Привет,
                   {' '}
-                  {authState.email}
+                  {authState.name}
                 </li>
                 <li className="pipe-separate c-white left">
                   <Link to="/logout" onClick={logoutHandler} className="nav-link">Выйти</Link>

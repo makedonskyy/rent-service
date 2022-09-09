@@ -18,15 +18,21 @@ import OneHouse from './pages/OneHouse';
 import AllRooms from './pages/AllRooms';
 import OneRoom from './pages/OneRoom';
 
+import OwnerApart from './pages/OwnerApart';
+
+import Map from './Map';
+
+
 export default function App({
-  allAppartments, oneAppartment, allHouses, oneHouse, allRooms, oneRoom,
+  allAppartments, oneAppartment, allHouses, oneHouse, allRooms, oneRoom, myApart,
 }) {
   const [authState, setAuthState] = useState('');
   return (
     <div>
       <Header authState={authState} setAuthState={setAuthState} />
       <Routes>
-        <Route path="/" element={<Main />} />
+        {/* <Route path="/" element={<Main />} /> */}
+        <Route path="/" element={<Map />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/appartments" element={<AllAppartments appartments={allAppartments} />} />
         <Route path="/categories/appartments/:appId" element={<OneAppartment oneAppartment={oneAppartment} />} />
@@ -35,12 +41,15 @@ export default function App({
         <Route path="/categories/rooms" element={<AllRooms rooms={allRooms} />} />
         <Route path="/categories/rooms/:appId" element={<OneRoom oneRoom={oneRoom} />} />
         <Route path="/login" element={<LoginMain />} />
-        <Route path="/login/user" element={<Login />} />
-        <Route path="/login/owner" element={<OwnerLogin />} />
+
+        <Route path="/login/user" element={<Login authState={authState} setAuthState={setAuthState}/>} />
+        <Route path="/login/owner" element={<OwnerLogin authState={authState} setAuthState={setAuthState}/>} />
         <Route path="/signup" element={<SignUpMain />} />
-        <Route path="/signup/owner" element={<OwnerSignUp />} />
-        <Route path="/signup/user" element={<SignUp />} />
+        <Route path="/signup/owner" element={<OwnerSignUp authState={authState} setAuthState={setAuthState} />} />
+        <Route path="/signup/user" element={<SignUp authState={authState} setAuthState={setAuthState} />} />
+
         <Route path="/apartform" element={<AddAppartment />} />
+        <Route path="/myapartments" element={<OwnerApart myApart={myApart} />} />
       </Routes>
       <Footer />
     </div>

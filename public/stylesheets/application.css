@@ -212,6 +212,10 @@ h1:hover::after {
 	outline: 5px solid rgb(2, 0, 36);
 }
 
+link {
+	text-decoration: none !important;
+}
+
 
 map {
 	width: 500px;
