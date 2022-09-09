@@ -25,7 +25,7 @@ export default function App({
   const [authState, setAuthState] = useState('');
   return (
     <div>
-      <Header authState={authState} setAuthState={setAuthState} />
+      {/* <Header authState={authState} setAuthState={setAuthState} /> */}
       <Routes>
         {/* <Route path="/" element={<Main />} /> */}
         <Route path="/" element={<Map />} />
@@ -44,7 +44,7 @@ export default function App({
         <Route path="/signup/user" element={<SignUp setAuthState={setAuthState} />} />
         <Route path="/apartform" element={<AddAppartment />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -13,9 +13,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-
 	background: linear-gradient(to bottom, #8a7b92, #8d70a2); /*fiolet*/
-
 }
 
 .container {
