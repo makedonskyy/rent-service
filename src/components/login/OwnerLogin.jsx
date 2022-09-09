@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 export default function OwnerLogin({setAuthState}) {
+
   const [input, setInput] = useState({
     email: '', password: '',
   });

@@ -22,7 +22,7 @@ export default function SignUp({ setAuthState }) {
     if (response.ok) {
       // console.log(response);
       const data = await response.json();
-      setAuthState({ ...data, ownerOrUser: 'owner' });
+      setAuthState({ ...data, ownerOrUser: 'user', description: data.description });
       navigate('/');
     } else {
       // console.log('not authed');
