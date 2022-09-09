@@ -18,7 +18,7 @@ export default function Header({ authState, setAuthState }) {
     if (authState.ownerOrUser === 'user') {
       favorites = (<a className="c-white nav-item nav-link" href="/favorites">Избранное</a>);
     } else if (authState.ownerOrUser === 'owner') {
-      favorites = (<a className="c-white nav-item nav-link" href="/myHouses">Мои объявления</a>);
+      favorites = (<a className="c-white nav-item nav-link" href="/myapartments">Мои объявления</a>);
     } else favorites = (<></>);
   } else {
     favorites = (<></>);
@@ -41,6 +41,7 @@ export default function Header({ authState, setAuthState }) {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
+          <a className="c-white nav-item nav-link" href="/myapartments">Мои объявления</a>
           <Link to="/categories">Категории</Link>
           {favorites}
         </div>

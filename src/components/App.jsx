@@ -17,9 +17,10 @@ import AllHouses from './pages/AllHouses';
 import OneHouse from './pages/OneHouse';
 import AllRooms from './pages/AllRooms';
 import OneRoom from './pages/OneRoom';
+import OwnerApart from './pages/OwnerApart';
 
 export default function App({
-  allAppartments, oneAppartment, allHouses, oneHouse, allRooms, oneRoom,
+  allAppartments, oneAppartment, allHouses, oneHouse, allRooms, oneRoom, myApart,
 }) {
   const [authState, setAuthState] = useState('');
   return (
@@ -41,6 +42,7 @@ export default function App({
         <Route path="/signup/owner" element={<OwnerSignUp />} />
         <Route path="/signup/user" element={<SignUp />} />
         <Route path="/apartform" element={<AddAppartment />} />
+        <Route path="/myapartments" element={<OwnerApart myApart={myApart} />} />
       </Routes>
       <Footer />
     </div>

@@ -140,4 +140,12 @@ route.get('/apartform', async (req, res) => {
   }
 });
 
+route.get('/myapartments', async (req, res) => {
+  try {
+    res.render('Layout');
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 export default route;
