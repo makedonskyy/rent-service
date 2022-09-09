@@ -35,11 +35,11 @@ export default function App({
         <Route path="/categories/rooms" element={<AllRooms rooms={allRooms} />} />
         <Route path="/categories/rooms/:appId" element={<OneRoom oneRoom={oneRoom} />} />
         <Route path="/login" element={<LoginMain />} />
-        <Route path="/login/user" element={<Login />} />
-        <Route path="/login/owner" element={<OwnerLogin />} />
+        <Route path="/login/user" element={<Login setAuthState={setAuthState} />} />
+        <Route path="/login/owner" element={<OwnerLogin setAuthState={setAuthState} />} />
         <Route path="/signup" element={<SignUpMain />} />
-        <Route path="/signup/owner" element={<OwnerSignUp />} />
-        <Route path="/signup/user" element={<SignUp />} />
+        <Route path="/signup/owner" element={<OwnerSignUp setAuthState={setAuthState} />} />
+        <Route path="/signup/user" element={<SignUp setAuthState={setAuthState} />} />
         <Route path="/apartform" element={<AddAppartment />} />
       </Routes>
       <Footer />

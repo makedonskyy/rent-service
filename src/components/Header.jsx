@@ -51,7 +51,7 @@ export default function Header({ authState, setAuthState }) {
                 <li className="pipe-separate c-white left">
                   Привет,
                   {' '}
-                  {authState.email}
+                  {authState.name}
                 </li>
                 <li className="pipe-separate c-white left">
                   <Link to="/logout" onClick={logoutHandler} className="nav-link">Выйти</Link>
