@@ -36,7 +36,7 @@ export default function App({
   // }, []);
   return (
     <div>
-      <Header authState={authState} setAuthState={setAuthState} />
+      {/* <Header authState={authState} setAuthState={setAuthState} /> */}
       <Routes>
         <Route path="/" element={<Main />} />
         {/* <Route path="/" element={<Map />} /> */}
@@ -58,7 +58,7 @@ export default function App({
         <Route path="/myapartments/update/:id" element={<EditCard maApart={maApart} />} />
 
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
