@@ -141,8 +141,9 @@ router.post('/login/owner', async (req, res) => {
 
 router.post('/myapartments/update/:id', async (req, res) => {
   try {
+    const { id } = req.params;
     const { userId } = req.session;
-    const myFlat = await Cathegory.findOne({ where: { id: req.params.id } });
+    const myFlat = await Cathegory.findOne({ where: { id } });
     const {
       cathegory, price, countOfRooms, address, description,
     } = req.body;
@@ -153,7 +154,7 @@ router.post('/myapartments/update/:id', async (req, res) => {
     myFlat.description = description;
     myFlat.ownerId = userId;
     req.session.maApart = myFlat;
-    myFlat.save();
+    res.json(myFlat);
     // req.session.myApart = myFlat;
     return res.redirect('/myapartments');
   } catch (error) {
