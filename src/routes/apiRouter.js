@@ -62,7 +62,6 @@ router.get('/categories/rooms/:id', async (req, res) => {
   res.json(oneRoom);
 });
 
-
 router.post('/login/user', async (req, res) => {
   const { email, password } = req.body;
   const currUser = await User.findOne({ where: { email } });
@@ -110,13 +109,27 @@ router.post('/login/owner', async (req, res) => {
   }
 });
 
-// router.get('/myapartments/update/:id', async (req, res) => {
-//   try {
-//     res.render('Layout');
-//   } catch (error) {
-//     console.error(error);
-//   }
-// })
+router.post('/myapartments/update/:id', async (req, res) => {
+  try {
+    const { userId } = req.session;
+    const myFlat = await Cathegory.findOne({ where: { id: req.params.id } });
+    const {
+      cathegory, price, countOfRooms, address, description,
+    } = req.body;
+    myFlat.cathegory = cathegory;
+    myFlat.price = price;
+    myFlat.countOfRooms = countOfRooms;
+    myFlat.address = address;
+    myFlat.description = description;
+    myFlat.ownerId = userId;
+    req.session.maApart = myFlat;
+    myFlat.save();
+    // req.session.myApart = myFlat;
+    return res.redirect('/myapartments');
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 router.get('/categories/appartments', async (req, res) => {
   const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 } });
@@ -144,8 +157,8 @@ router.post('/apartform', async (req, res) => {
       cathegory, price, countOfRooms, address, description, image,
     } = req.body;
     const { userId } = req.session;
-    console.log(userId);
-    console.log(req.session.userId);
+    // console.log(userId);
+    // console.log(req.session.userId);
     const newUser = await Appartment.create({
       cathegoryId: cathegory,
       ownerId: userId,
@@ -164,8 +177,18 @@ router.post('/apartform', async (req, res) => {
 router.get('/logout', (req, res) => {
   req.session.destroy();
   res.clearCookie('user_sid');
-
   res.sendStatus(200);
+});
+
+router.delete('/myapartments/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Appartment.destroy({ where: { id } });
+    res.sendStatus(201);
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
 });
 
 export default router;
