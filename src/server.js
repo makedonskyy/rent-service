@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 import indexRouter from './routes/indexRouter';
 import apiRouter from './routes/apiRouter';
 import jsxRender from './components/utils/jsxRender';
-import { Appartment } from './db1/models';
+import { Appartment, Cathegory, Owner } from './db1/models';
 
 dotenv.config();
 
@@ -34,15 +34,24 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 
 app.use(async (req, res, next) => {
-  const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 } });
+  const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 }, include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
   res.locals.allAppartment = allAppartments;
-  const allHouses = await Appartment.findAll({ where: { cathegoryId: 3 } });
+  const allHouses = await Appartment.findAll({ where: { cathegoryId: 2 }, include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
   res.locals.allHouses = allHouses;
-  const allRooms = await Appartment.findAll({ where: { cathegoryId: 2 } });
+  const allRooms = await Appartment.findAll({ where: { cathegoryId: 3 }, include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
   res.locals.allHouses = allRooms;
   res.locals.path = req.originalUrl;
   res.locals.userName = req.session?.userName;
-
+  res.locals.ownerId = req.session.userId;
+  console.log(res.locals.ownerId);
+  if (req.session.userId) {
+    const myApart = await Appartment.findAll({
+      where: { ownerId: res.locals.ownerId },
+    });
+    res.locals.myApart = myApart;
+  }
+  res.locals.userOrOwner = req.session.userOrOwner;
+  res.locals.maApart = req.session.maApart;
   next();
 });
 app.use(express.static('public'));

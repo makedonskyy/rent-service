@@ -18,7 +18,7 @@ export default function Header({ authState, setAuthState }) {
     if (authState.ownerOrUser === 'user') {
       favorites = (<a className="c-white nav-item nav-link" href="/favorites">Избранное</a>);
     } else if (authState.ownerOrUser === 'owner') {
-      favorites = (<a className="c-white nav-item nav-link" href="/myHouses">Мои объявления</a>);
+      favorites = (<Link to="/myapartments" className="c-white nav-item nav-link">Мои объявления</Link>);
     } else favorites = (<></>);
   } else {
     favorites = (<></>);
@@ -30,25 +30,32 @@ export default function Header({ authState, setAuthState }) {
       style={{
         position: 'fixed',
         top: 0,
-        width: '100vw !important',
+        width: '100vw',
         height: '85px',
         fontSize: '20px',
+
       }}
     >
-      <a className="navbar-brand" href="/">Rent Service</a>
+      <Link to="/" className="navbar-brand">Rent Service</Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon" />
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav">
+        <div
+          className="navbar-nav"
+          style={{
+            display: 'flex', alignItems: 'center',
+          }}
+        >
           <Link to="/categories">Категории</Link>
           {favorites}
         </div>
         <div className="login">
-          <ul className="no-bullets no-margin no-padding right">
+          <ul className="no-bullets no-margin no-padding right" style={{ display: 'flex' }}>
+            {console.log(authState)}
             {authState ? (
               <>
-                <li className="pipe-separate c-white left">
+                <li className="pipe-separate c-white left" style={{ marginRight: '25px' }}>
                   Привет,
                   {' '}
                   {authState.name}

@@ -2,7 +2,7 @@ import express from 'express';
 // import { renderToString } from 'react-dom/server';
 // import React from 'react';
 // import Layout from '../components/Layout';
-import { Appartment, Cathegory } from '../db1/models';
+import { Appartment, Cathegory, Owner } from '../db1/models';
 
 const route = express.Router();
 
@@ -84,7 +84,7 @@ route.get('/categories/appartments', async (req, res) => {
 route.get('/categories/appartments/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const oneAppartment = await Appartment.findByPk(id);
+    const oneAppartment = await Appartment.findByPk(id, { include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
     const initState = { path: req.originalUrl, oneAppartment };
     res.render('Layout', initState);
   } catch (error) {
@@ -104,7 +104,7 @@ route.get('/categories/houses', async (req, res) => {
 route.get('/categories/houses/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const oneHouse = await Appartment.findByPk(id);
+    const oneHouse = await Appartment.findByPk(id, { include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
     const initState = { path: req.originalUrl, oneHouse };
     res.render('Layout', initState);
   } catch (error) {
@@ -124,7 +124,7 @@ route.get('/categories/rooms', async (req, res) => {
 route.get('/categories/rooms/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const oneRoom = await Appartment.findByPk(id);
+    const oneRoom = await Appartment.findByPk(id, { include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
     const initState = { path: req.originalUrl, oneRoom };
     res.render('Layout', initState);
   } catch (error) {
@@ -139,5 +139,22 @@ route.get('/apartform', async (req, res) => {
     console.error(error);
   }
 });
+
+route.get('/myapartments', async (req, res) => {
+  try {
+    res.render('Layout');
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+
+route.get('/myapartments/update/:id', async (req, res) => {
+  try {
+    res.render('Layout');
+  } catch (error) {
+    console.error(error);
+  }
+})
 
 export default route;
