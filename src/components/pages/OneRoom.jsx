@@ -1,35 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export default function OneApp({ oneHouse }) {
-  const [house, setHouse] = useState(oneHouse || null);
-  // console.log(appartmentId);
+export default function OneApp({ oneRoom }) {
+  const [room, setRooom] = useState(oneRoom || null);
   const { appId } = useParams();
   useEffect(() => {
-    fetch(`/api/v1/categories/houses/${appId}`) //
+    fetch(`/api/v1/categories/rooms/${appId}`) //
       .then((res) => res.json())
-      .then((data) => setHouse(data));
+      .then((data) => setRooom(data));
   }, []);
   return (
     <div>
-      {house && (
+      {room && (
       <>
         <div className="row">
           <div className="col-2">
-            <h2>{house?.cathegoryId}</h2>
+            <h2>{room?.cathegoryId}</h2>
           </div>
           <div className="col-4">
-            <img src={house?.image} className="card-img-top" alt="..." />
+            <img src={room?.image} className="card-img-top" alt="..." />
           </div>
         </div>
         <div className="row">
-          <h2>{house?.price}</h2>
+          <h2>{room?.price}</h2>
         </div>
         <div className="row">
-          <h2>{house?.address}</h2>
+          <h2>{room?.address}</h2>
         </div>
         <div className="row">
-          <h2>{house?.description}</h2>
+          <h2>{room?.description}</h2>
         </div>
       </>
       )}

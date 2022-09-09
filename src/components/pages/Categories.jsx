@@ -5,14 +5,14 @@ export default function Categories() {
   return (
 
     <ul id="nav">
-      <li className="nav-link">
-        <h1 data-name="Квартиры"><a href="/categories/appartments">Квартиры</a></h1>
+      <li className="link">
+        <Link to="/categories/appartments"><h1 data-name="Квартиры">Квартиры</h1></Link>
       </li>
-      <li className="nav-link">
-        <h1 data-name="Дома">Дома</h1>
+      <li className="link">
+        <Link to="/categories/houses"><h1 data-name="Дома">Дома</h1></Link>
       </li>
-      <li className="nav-link">
-        <h1 data-name="Комнаты">Комнаты</h1>
+      <li className="ink">
+        <Link to="/categories/rooms"><h1 data-name="Комнаты">Комнаты</h1></Link>
       </li>
     </ul>
 

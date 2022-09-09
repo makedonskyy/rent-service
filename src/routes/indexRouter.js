@@ -60,4 +60,44 @@ route.get('/categories/appartments/:id', async (req, res) => {
   }
 });
 
+route.get('/categories/houses', async (req, res) => {
+  try {
+    const initState = { path: req.originalUrl };
+    res.render('Layout', initState);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+route.get('/categories/houses/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const oneHouse = await Appartment.findByPk(id);
+    const initState = { path: req.originalUrl, oneHouse };
+    res.render('Layout', initState);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+route.get('/categories/rooms', async (req, res) => {
+  try {
+    const initState = { path: req.originalUrl };
+    res.render('Layout', initState);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+route.get('/categories/rooms/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const oneRoom = await Appartment.findByPk(id);
+    const initState = { path: req.originalUrl, oneRoom };
+    res.render('Layout', initState);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 export default route;

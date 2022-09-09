@@ -34,12 +34,15 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 
 app.use(async (req, res, next) => {
-  const allAppartment = await Appartment.findAll({ where: { cathegoryId: 1 } });
-  // console.log(allAppartment);
-  res.locals.allAppartment = allAppartment;
+  const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 } });
+  res.locals.allAppartment = allAppartments;
+  const allHouses = await Appartment.findAll({ where: { cathegoryId: 3 } });
+  res.locals.allHouses = allHouses;
+  const allRooms = await Appartment.findAll({ where: { cathegoryId: 2 } });
+  res.locals.allHouses = allRooms;
   res.locals.path = req.originalUrl;
   res.locals.userName = req.session?.userName;
-  res.locals.appartmentId = req.session.appartId;
+
   next();
 });
 app.use(express.static('public'));
@@ -48,7 +51,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use('/', indexRouter);
-// app.use('/categories', appartRouter);
 app.use('/api/v1', apiRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));

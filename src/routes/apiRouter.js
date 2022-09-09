@@ -23,17 +23,41 @@ router.post('/signup', async (req, res) => {
 });
 
 router.get('/categories/appartments', async (req, res) => {
-  const allAppartment = await Appartment.findAll({ where: { cathegoryId: 1 } });
-  const initState = { path: req.originalUrl, allAppartment };
-  res.render('Layout', initState);
-  res.json(allAppartment)
+  const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 } });
+  // const initState = { path: req.originalUrl, allAppartments };
+  // res.render('Layout', initState);
+  res.json(allAppartments);
 });
 
 router.get('/categories/appartments/:id', async (req, res) => {
   const { id } = req.params;
   const oneAppartment = await Appartment.findByPk(id);
-  req.session.appartId = oneAppartment;
   res.json(oneAppartment);
 });
 
+router.get('/categories/houses', async (req, res) => {
+  const allHouses = await Appartment.findAll({ where: { cathegoryId: 3 }});
+  // const initState = { path: req.originalUrl, allHouses };
+  // res.render('Layout', initState);
+  res.json(allHouses);
+});
+
+router.get('/categories/houses/:id', async (req, res) => {
+  const { id } = req.params;
+  const oneHouse = await Appartment.findByPk(id);
+  res.json(oneHouse);
+});
+
+router.get('/categories/rooms', async (req, res) => {
+  const allRooms = await Appartment.findAll({ where: { cathegoryId: 2 } });
+  // const initState = { path: req.originalUrl, allRooms };
+  // res.render('Layout', initState);
+  res.json(allRooms);
+});
+
+router.get('/categories/rooms/:id', async (req, res) => {
+  const { id } = req.params;
+  const oneRoom = await Appartment.findByPk(id);
+  res.json(oneRoom);
+});
 export default router;
