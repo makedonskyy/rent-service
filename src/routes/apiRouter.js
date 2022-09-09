@@ -1,8 +1,9 @@
 import express from 'express';
 
 import bcrypt from 'bcrypt';
-import { User, Appartment, Cathegory, Owner } from '../db1/models';
-
+import {
+  User, Appartment, Cathegory, Owner,
+} from '../db1/models';
 
 const router = express.Router();
 
@@ -23,7 +24,6 @@ router.post('/signup/user', async (req, res) => {
   }
 });
 
-
 router.get('/categories/appartments', async (req, res) => {
   const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 } });
   // const initState = { path: req.originalUrl, allAppartments };
@@ -38,11 +38,11 @@ router.get('/categories/appartments/:id', async (req, res) => {
 });
 
 router.get('/categories/houses', async (req, res) => {
-  const allHouses = await Appartment.findAll({ where: { cathegoryId: 3 }});
+  const allHouses = await Appartment.findAll({ where: { cathegoryId: 3 } });
   // const initState = { path: req.originalUrl, allHouses };
   // res.render('Layout', initState);
   res.json(allHouses);
-
+});
 router.post('/login/user', async (req, res) => {
   const { email, password } = req.body;
   const currUser = await User.findOne({ where: { email } });
@@ -88,7 +88,7 @@ router.post('/login/owner', async (req, res) => {
   }
 });
 
-router.post('/addAppartment', async (req, res) => {
+router.post('/apartform', async (req, res) => {
   try {
     const {
       cathegory, price, countOfRooms, address, description, image,
@@ -110,17 +110,13 @@ router.post('/addAppartment', async (req, res) => {
 router.get('/logout', (req, res) => {
   req.session.destroy();
   res.clearCookie('user_sid');
-
-  res.sendStatus(200)
-
-
+  res.sendStatus(200);
 });
 
 router.get('/categories/houses/:id', async (req, res) => {
   const { id } = req.params;
   const oneHouse = await Appartment.findByPk(id);
   res.json(oneHouse);
-
 });
 
 router.get('/categories/rooms', async (req, res) => {
@@ -135,4 +131,5 @@ router.get('/categories/rooms/:id', async (req, res) => {
   const oneRoom = await Appartment.findByPk(id);
   res.json(oneRoom);
 });
+
 export default router;

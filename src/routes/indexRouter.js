@@ -65,10 +65,8 @@ route.get('/login/owner', (req, res) => {
 
 route.get('/categories', async (req, res) => {
   try {
-
     const initState = { path: req.originalUrl };
     res.render('Layout', initState);
-
   } catch (err) {
     console.error(err);
   }
@@ -129,6 +127,14 @@ route.get('/categories/rooms/:id', async (req, res) => {
     const oneRoom = await Appartment.findByPk(id);
     const initState = { path: req.originalUrl, oneRoom };
     res.render('Layout', initState);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+route.get('/apartform', async (req, res) => {
+  try {
+    res.render('Layout');
   } catch (error) {
     console.error(error);
   }

@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
-import Categories from './pages/Categories';
-
 import AddAppartment from './AddAppartment';
-import Categories from './Categories';
-
+import Categories from './pages/Categories';
 import Footer from './Footer';
 import Header from './Header';
 import Login from './login/Login';
@@ -15,13 +11,12 @@ import OwnerSignUp from './login/OwnerSignUp';
 import SignUp from './login/SignUp';
 import SignUpMain from './login/SignUpMain';
 import Main from './pages/Main';
-import AllAppartments from './pages/AllAppartments';
-import OneAppartment from './pages/OneAppartment';
+import AllAppartments from './pages/allAppartments';
+import OneAppartment from './pages/oneAppartment';
 import AllHouses from './pages/AllHouses';
 import OneHouse from './pages/OneHouse';
 import AllRooms from './pages/AllRooms';
 import OneRoom from './pages/OneRoom';
-
 
 export default function App({
   allAppartments, oneAppartment, allHouses, oneHouse, allRooms, oneRoom,
@@ -31,10 +26,8 @@ export default function App({
     <div>
       <Header />
       <Routes>
-        {/* <Route path="/" element={<Main />} /> */}
-        <Route path="/" element={<AddAppartment />} />
+        <Route path="/" element={<Main />} />
         <Route path="/categories" element={<Categories />} />
-
         <Route path="/categories/appartments" element={<AllAppartments appartments={allAppartments} />} />
         <Route path="/categories/appartments/:appId" element={<OneAppartment oneAppartment={oneAppartment} />} />
         <Route path="/categories/houses" element={<AllHouses houses={allHouses} />} />
@@ -47,7 +40,7 @@ export default function App({
         <Route path="/signup" element={<SignUpMain />} />
         <Route path="/signup/owner" element={<OwnerSignUp />} />
         <Route path="/signup/user" element={<SignUp />} />
-
+        <Route path="/apartform" element={<AddAppartment />} />
       </Routes>
       <Footer />
     </div>
