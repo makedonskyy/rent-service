@@ -31,7 +31,7 @@ export default function Header({ authState, setAuthState }) {
         position: 'fixed',
         top: 0,
         width: '100vw !important',
-        height: '100px',
+        height: '85px',
         fontSize: '20px',
       }}
     >
@@ -54,14 +54,14 @@ export default function Header({ authState, setAuthState }) {
                   {authState.email}
                 </li>
                 <li className="pipe-separate c-white left">
-                  <Link to="/logout" onClick={logoutHandler} className="nav-link">Logout</Link>
+                  <Link to="/logout" onClick={logoutHandler} className="nav-link">Выйти</Link>
                 </li>
               </>
             )
               : (
                 <div className="strong">
-                  <li className="pipe-separate c-white left"><button type="button" style={{ marginRight: '5px' }} className="button-34"><Link to="/signup">register</Link></button></li>
-                  <li className="pipe-separate c-white left"><button type="button" className="button-34"><Link to="/login">login</Link></button></li>
+                  <li className="pipe-separate c-white left"><button type="button" style={{ marginRight: '5px' }} className="button-34"><Link to="/signup">Регистрация</Link></button></li>
+                  <li className="pipe-separate c-white left"><button type="button" className="button-34"><Link to="/login">Вход</Link></button></li>
                 </div>
               )}
           </ul>

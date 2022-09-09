@@ -17,14 +17,19 @@ export default function Footer() {
           position: 'fixed',
           bottom: 0,
           width: '100vw',
-          height: '100px',
+          height: '85px',
           color: 'white',
         }}
       >
-        <p>
-          Адрес офиса: Москва, ул. Орджоникидзе, 11 стр. 10
-          (м. Ленинский проспект)
-        </p>
+        <div>
+          <div style={{ display: 'flex', flexFlow: 'row wrap-reverse', justifyContent: 'space-around' }}>
+            Адрес офиса: Москва, ул. Орджоникидзе, 11 стр. 10
+            (м. Ленинский проспект)
+            {' '}
+
+          </div>
+          <div>Email: Info@Elbrusboot.Camp</div>
+        </div>
         &copy;
         {' '}
         {new Date().getFullYear()}

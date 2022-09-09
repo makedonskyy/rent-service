@@ -111,12 +111,16 @@ router.get('/logout', (req, res) => {
   req.session.destroy();
   res.clearCookie('user_sid');
 
+  res.sendStatus(200)
+
+
 });
 
 router.get('/categories/houses/:id', async (req, res) => {
   const { id } = req.params;
   const oneHouse = await Appartment.findByPk(id);
   res.json(oneHouse);
+
 });
 
 router.get('/categories/rooms', async (req, res) => {
