@@ -3,9 +3,13 @@ import morgan from 'morgan';
 import session from 'express-session';
 import store from 'session-file-store';
 import path from 'path';
+import dotenv from 'dotenv';
 import indexRouter from './routes/indexRouter';
 import apiRouter from './routes/apiRouter';
 import jsxRender from './components/utils/jsxRender';
+import { Appartment } from './db1/models';
+
+dotenv.config();
 
 require('dotenv').config();
 
@@ -27,18 +31,24 @@ const sessionConfig = {
     httpOnly: true, // Серверная установка и удаление куки, по умолчанию true
   },
 };
+app.use(session(sessionConfig));
 
+app.use(async (req, res, next) => {
+  const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 } });
+  res.locals.allAppartment = allAppartments;
+  const allHouses = await Appartment.findAll({ where: { cathegoryId: 3 } });
+  res.locals.allHouses = allHouses;
+  const allRooms = await Appartment.findAll({ where: { cathegoryId: 2 } });
+  res.locals.allHouses = allRooms;
+  res.locals.path = req.originalUrl;
+  res.locals.userName = req.session?.userName;
+
+  next();
+});
 app.use(express.static('public'));
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(session(sessionConfig));
-
-app.use((req, res, next) => {
-  res.locals.path = req.originalUrl;
-  res.locals.userName = req.session?.userName;
-  next();
-});
 
 app.use('/', indexRouter);
 app.use('/api/v1', apiRouter);
