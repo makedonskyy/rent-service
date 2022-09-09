@@ -46,6 +46,7 @@ export default function Header({ authState, setAuthState }) {
         </div>
         <div className="login">
           <ul className="no-bullets no-margin no-padding right">
+            {console.log(authState)}
             {authState ? (
               <>
                 <li className="pipe-separate c-white left">

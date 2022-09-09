@@ -44,10 +44,12 @@ app.use(async (req, res, next) => {
   res.locals.path = req.originalUrl;
   res.locals.userName = req.session?.userName;
   res.locals.ownerId = req.session.userId;
+  console.log(res.locals.ownerId);
   const myApart = await Appartment.findAll({
-    where: { ownerId: res.locals.ownerId },
+    where: { ownerId: res.locals.ownerId ?? 58},
   });
   res.locals.myApart = myApart;
+  res.locals.userOrOwner = req.session.userOrOwner;
   next();
 });
 app.use(express.static('public'));

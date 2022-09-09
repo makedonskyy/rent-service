@@ -18,6 +18,7 @@ router.post('/signup/user', async (req, res) => {
     });
     req.session.userId = currUser.id;
     req.session.userName = currUser.name;
+    req.session.userOrOwner = 'user';
     res.json({ name: currUser.name, description: currUser.description });
     // res.sendStatus(200);
   } catch (error) {
@@ -69,6 +70,7 @@ router.post('/login/user', async (req, res) => {
   if (compare) {
     req.session.userId = currUser.id;
     req.session.userEmail = currUser.email;
+    req.session.userOrOwner = 'user';
     res.json({ name: currUser.name, description: currUser.description });
   } else {
     res.sendStatus(401);
@@ -86,6 +88,7 @@ router.post('/signup/owner', async (req, res) => {
     });
     req.session.userId = currUser.id;
     req.session.userName = currUser.name;
+    req.session.userOrOwner = 'owner';
     res.json({ name: currUser.name });
     // res.sendStatus(200);
   } catch (error) {
@@ -100,12 +103,12 @@ router.post('/login/owner', async (req, res) => {
   if (compare) {
     req.session.userId = currUser.id;
     req.session.userEmail = currUser.email;
+    req.session.userOrOwner = 'owner';
     res.json({ name: currUser.name });
   } else {
     res.sendStatus(401);
   }
 });
-
 
 // router.get('/myapartments/update/:id', async (req, res) => {
 //   try {
@@ -135,14 +138,17 @@ router.get('/categories/houses', async (req, res) => {
   res.json(allHouses);
 });
 
-
 router.post('/apartform', async (req, res) => {
   try {
     const {
       cathegory, price, countOfRooms, address, description, image,
     } = req.body;
+    const { userId } = req.session;
+    console.log(userId);
+    console.log(req.session.userId);
     const newUser = await Appartment.create({
-      cathegory,
+      cathegoryId: cathegory,
+      ownerId: userId,
       price,
       countOfRooms,
       address,
@@ -154,8 +160,6 @@ router.post('/apartform', async (req, res) => {
     console.log(err);
   }
 });
-
-
 
 router.get('/logout', (req, res) => {
   req.session.destroy();

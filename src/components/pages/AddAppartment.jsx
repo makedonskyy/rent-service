@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useNavigate } from 'react';
 
 export default function AddAppartment() {
+  // const navigate = useNavigate();
   const [input, setInput] = useState({
     cathegory: '',
     price: '',
@@ -27,6 +28,7 @@ export default function AddAppartment() {
         description: '',
         image: '',
       });
+      // navigate('/myapartments');
     }
   };
   return (
@@ -35,13 +37,13 @@ export default function AddAppartment() {
       justifyContent: 'center',
     }}
     >
-      <form>
+      <form onSubmit={submitHandler}>
         <div className="form-group">
           <label htmlFor="exampleFormControlSelect1">Категория</label>
           <select onChange={changeHandler} name="cathegory" value={input.cathegory} className="form-control" id="exampleFormControlSelect1">
-            <option value="Дом">Дом</option>
-            <option value="Квартира">Квартира</option>
-            <option value="Комната">Комната</option>
+            <option value="2">Дом</option>
+            <option value="1">Квартира</option>
+            <option value="3">Комната</option>
           </select>
         </div>
         <div className="form-group">
