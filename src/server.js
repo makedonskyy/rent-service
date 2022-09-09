@@ -5,7 +5,7 @@ import store from 'session-file-store';
 import path from 'path';
 import dotenv from 'dotenv';
 import indexRouter from './routes/indexRouter';
-import apiRouter from './routes/apiRouter';
+import apiRouter from './routes/apiRouter'
 import jsxRender from './components/utils/jsxRender';
 import { Appartment } from './db1/models';
 

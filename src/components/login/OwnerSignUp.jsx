@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function SignUp() {
+export default function OwnerSignUp() {
   const [input, setInput] = useState({
-    name: '', email: '', password: '', description: '',
+    name: '', email: '', password: '', phone: '',
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ export default function SignUp() {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/v1/signup/user', {
+    const response = await fetch('/api/v1/signup/owner', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -52,11 +52,11 @@ export default function SignUp() {
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
-            Описание Вашего профиля для анкеты арендодателю
-            <input value={input.description} onChange={inputHandler} name="description" type="text" className="form-control" id="exampleInputPassword1" />
+            Телефон
+            <input value={input.phone} onChange={inputHandler} name="phone" type="text" className="form-control" id="exampleInputPassword1" />
           </label>
         </div>
-        <button type="submit" className="button-34">Submit</button>
+        <button type="submit" className="button-34">Регистрация</button>
       </div>
     </form>
   );

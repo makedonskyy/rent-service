@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function SignUp() {
+export default function Login() {
   const [input, setInput] = useState({
-    name: '', email: '', password: '', description: '',
+    email: '', password: '',
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ export default function SignUp() {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/v1/signup/user', {
+    const response = await fetch('/api/v1/login/user', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -29,15 +29,9 @@ export default function SignUp() {
   return (
     <form onSubmit={submitHandler}>
       <div style={{
-        position: 'absolute', top: '20%', left: '40%',
+        position: 'absolute', top: '40%', left: '40%',
       }}
       >
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Ваше имя
-            <input value={input.name} onChange={inputHandler} name="name" type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-          </label>
-        </div>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Введите Email
@@ -50,13 +44,7 @@ export default function SignUp() {
             <input value={input.password} onChange={inputHandler} name="password" type="password" className="form-control" id="exampleInputPassword1" />
           </label>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Описание Вашего профиля для анкеты арендодателю
-            <input value={input.description} onChange={inputHandler} name="description" type="text" className="form-control" id="exampleInputPassword1" />
-          </label>
-        </div>
-        <button type="submit" className="button-34">Submit</button>
+        <button type="submit" className="button-34">Войти</button>
       </div>
     </form>
   );

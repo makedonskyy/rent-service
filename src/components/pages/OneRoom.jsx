@@ -22,7 +22,7 @@ export default function OneApp({ oneRoom }) {
           </div>
         </div>
         <div className="row">
-          <h2>{room?.price}</h2>
+          <h2>{`${room?.price} ₽/месяц`}</h2>
         </div>
         <div className="row">
           <h2>{room?.address}</h2>

@@ -23,7 +23,7 @@ export default function OneApp({ oneHouse }) {
           </div>
         </div>
         <div className="row">
-          <h2>{house?.price}</h2>
+          <h2>{`${house?.price} ₽/месяц`}</h2>
         </div>
         <div className="row">
           <h2>{house?.address}</h2>
