@@ -15,7 +15,7 @@ export default function OneApp({ oneRoom }) {
       <>
         <div className="row">
           <div className="col-2">
-            <h2>{room?.cathegoryId}</h2>
+            <h2>{room?.Cathegory.name}</h2>
           </div>
           <div className="col-4">
             <img src={room?.image} className="card-img-top" alt="..." />
@@ -30,6 +30,17 @@ export default function OneApp({ oneRoom }) {
         <div className="row">
           <h2>{room?.description}</h2>
         </div>
+        <div className="w-75 p-3">
+          <p className="fs-5">Контакты владельца:</p>
+        </div>
+        <div className="w-75 p-3">
+          <p className="fs-3">{room?.Owner.name}</p>
+        </div>
+        <div className="w-75 p-3">
+          <p className="fs-3">{room?.Owner.phone}</p>
+        </div>
+        
+
       </>
       )}
     </div>

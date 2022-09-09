@@ -30,7 +30,7 @@ export default function Header({ authState, setAuthState }) {
       style={{
         position: 'fixed',
         top: 0,
-        width: '100vw !important',
+        width: '100vw',
         height: '85px',
         fontSize: '20px',
       }}

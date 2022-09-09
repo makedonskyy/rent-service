@@ -13,7 +13,7 @@ export default function Footer() {
       <div
         className="text-center p-3"
         style={{
-          backgroundColor: 'rgba(0, 0, 0, 0.2)',
+          backgroundColor: 'rgba(95, 80, 107, 1)',
           position: 'fixed',
           bottom: 0,
           width: '100vw',

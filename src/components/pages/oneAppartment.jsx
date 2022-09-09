@@ -11,27 +11,39 @@ export default function OneApp({ oneAppartment }) {
   }, []);
   return (
     <div>
-      {app && (
-      <>
-        <div className="row">
-          <div className="col-4">
-            <img src={app?.image} className="card-img-top" alt="..." />
+      <div className="one">
+        {app && (
+        <>
+          <div className="row">
+            <div className="col-4">
+              <img src={app?.image} className="img-thumbnail" alt="..." />
+            </div>
+            <div className="w-75 p-4">
+              <p className="fs-4">{app?.Cathegory.name}</p>
+            </div>
           </div>
-          <div className="w-75 p-4">
-            <p className="fs-4">{app?.name}</p>
+          <div className="w-75 p-3">
+            <p className="fs-5">{`${app?.price} ₽/месяц`}</p>
           </div>
-        </div>
-        <div className="w-75 p-3">
-          <p className="fs-3">{`${app?.price} ₽/месяц`}</p>
-        </div>
-        <div className="w-75 p-3">
-          <p className="fs-3">{app?.address}</p>
-        </div>
-        <div className="w-75 p-3">
-          <p className="fs-3">{app?.description}</p>
-        </div>
-      </>
-      )}
+          <div className="w-75 p-3">
+            <p className="fs-5">{app?.address}</p>
+          </div>
+          <div className="w-75 p-3">
+            <p className="fs-5">{app?.description}</p>
+          </div>
+          <div className="w-75 p-3">
+            <p className="fs-4">Контакты владельца:</p>
+          </div>
+          <div className="w-75 p-3">
+            <p className="fs-5">{app?.Owner.name}</p>
+          </div>
+          <div className="w-75 p-3">
+            <p className="fs-5">{app?.Owner.phone}</p>
+          </div>
+
+        </>
+        )}
+      </div>
     </div>
   );
 }
