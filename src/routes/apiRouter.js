@@ -26,24 +26,41 @@ router.post('/signup/user', async (req, res) => {
 });
 
 router.get('/categories/appartments', async (req, res) => {
-  const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 } });
-  // const initState = { path: req.originalUrl, allAppartments };
-  // res.render('Layout', initState);
+  const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 }, include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
   res.json(allAppartments);
 });
 
 router.get('/categories/appartments/:id', async (req, res) => {
   const { id } = req.params;
-  const oneAppartment = await Appartment.findByPk(id);
+  const oneAppartment = await Appartment.findByPk(id, { include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
   res.json(oneAppartment);
 });
 
 router.get('/categories/houses', async (req, res) => {
-  const allHouses = await Appartment.findAll({ where: { cathegoryId: 2 } });
-  // const initState = { path: req.originalUrl, allHouses };
-  // res.render('Layout', initState);
+  const allHouses = await Appartment.findAll({ where: { cathegoryId: 2 }, include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
   res.json(allHouses);
 });
+
+router.get('/categories/houses/:id', async (req, res) => {
+  const { id } = req.params;
+  const oneHouse = await Appartment.findByPk(id, { include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
+  res.json(oneHouse);
+});
+
+router.get('/categories/rooms', async (req, res) => {
+  const allRooms = await Appartment.findAll({
+    where: { cathegoryId: 3 },
+    include: [{ Cathegory, include: [{ Owner, attributes: ['name', 'phone'] }] }],
+  });
+  res.json(allRooms);
+});
+
+router.get('/categories/rooms/:id', async (req, res) => {
+  const { id } = req.params;
+  const oneRoom = await Appartment.findByPk(id, { include: [{ Cathegory, include: [{ Owner, attributes: ['name', 'phone'] }] }] });
+  res.json(oneRoom);
+});
+
 
 router.post('/login/user', async (req, res) => {
   const { email, password } = req.body;
@@ -53,8 +70,6 @@ router.post('/login/user', async (req, res) => {
     req.session.userId = currUser.id;
     req.session.userEmail = currUser.email;
     res.json({ name: currUser.name, description: currUser.description });
-    // res.sendStatus(200);
-    // res.json({ name: currUser.login });
   } else {
     res.sendStatus(401);
   }
@@ -86,8 +101,6 @@ router.post('/login/owner', async (req, res) => {
     req.session.userId = currUser.id;
     req.session.userEmail = currUser.email;
     res.json({ name: currUser.name });
-    // res.sendStatus(200);
-    // res.json({ name: currUser.login });
   } else {
     res.sendStatus(401);
   }
@@ -147,26 +160,8 @@ router.post('/apartform', async (req, res) => {
 router.get('/logout', (req, res) => {
   req.session.destroy();
   res.clearCookie('user_sid');
+
   res.sendStatus(200);
-});
-
-router.get('/categories/houses/:id', async (req, res) => {
-  const { id } = req.params;
-  const oneHouse = await Appartment.findByPk(id);
-  res.json(oneHouse);
-});
-
-router.get('/categories/rooms', async (req, res) => {
-  const allRooms = await Appartment.findAll({ where: { cathegoryId: 2 } });
-  // const initState = { path: req.originalUrl, allRooms };
-  // res.render('Layout', initState);
-  res.json(allRooms);
-});
-
-router.get('/categories/rooms/:id', async (req, res) => {
-  const { id } = req.params;
-  const oneRoom = await Appartment.findByPk(id);
-  res.json(oneRoom);
 });
 
 export default router;
