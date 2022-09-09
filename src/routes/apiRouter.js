@@ -40,7 +40,7 @@ router.get('/categories/appartments/:id', async (req, res) => {
 });
 
 router.get('/categories/houses', async (req, res) => {
-  const allHouses = await Appartment.findAll({ where: { cathegoryId: 3 } });
+  const allHouses = await Appartment.findAll({ where: { cathegoryId: 2 } });
   // const initState = { path: req.originalUrl, allHouses };
   // res.render('Layout', initState);
   res.json(allHouses);
