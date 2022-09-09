@@ -6,7 +6,7 @@ export default function OwnerApart({ myApart }) {
   return (
     <>
       <div>
-        <button type="button" className="btn btn-secondary"><Link to="/api/v1/apartform">Добавить</Link></button>
+        <button type="button" className="btn btn-secondary"><Link to="/apartform">Добавить</Link></button>
       </div>
       <div className="grid text-center">
         {
