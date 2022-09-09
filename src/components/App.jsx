@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AddAppartment from './AddAppartment';
+import AddAppartment from './pages/AddAppartment';
 import Categories from './pages/Categories';
-import Footer from './Footer';
-import Header from './Header';
+import Footer from './userInterface/Footer';
+import Header from './userInterface/Header';
 import Login from './login/Login';
 import LoginMain from './login/LoginMain';
 import OwnerLogin from './login/OwnerLogin';
