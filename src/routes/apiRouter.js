@@ -1,7 +1,7 @@
 import express from 'express';
 
 import bcrypt from 'bcrypt';
-import { User, Appartment, Cathegory } from '../db1/models';
+import { User, Appartment } from '../db1/models';
 
 const router = express.Router();
 
