@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function SignUp() {
+export default function SignUp({ setAuthState }) {
   const [input, setInput] = useState({
     name: '', email: '', password: '', description: '',
   });
@@ -20,7 +20,9 @@ export default function SignUp() {
       body: JSON.stringify(input),
     });
     if (response.ok) {
-      console.log(response);
+      // console.log(response);
+      const data = await response.json();
+      setAuthState({ ...data, ownerOrUser: 'owner' });
       navigate('/');
     } else {
       // console.log('not authed');

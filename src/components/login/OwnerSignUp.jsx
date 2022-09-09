@@ -20,8 +20,9 @@ export default function OwnerSignUp({ setAuthState }) {
       body: JSON.stringify(input),
     });
     if (response.ok) {
-      console.log(response);
-      setAuthState(response.data);
+      // console.log(response);
+      const data = await response.json();
+      setAuthState({ ...data, ownerOrUser: 'owner' });
       navigate('/');
     } else {
       setError('Something went wrong');

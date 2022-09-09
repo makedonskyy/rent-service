@@ -147,5 +147,12 @@ route.get('/myapartments', async (req, res) => {
     console.error(error);
   }
 });
+route.get('/myapartments/update/:id', async (req, res) => {
+  try {
+    res.render('Layout');
+  } catch (error) {
+    console.error(error);
+  }
+})
 
 export default route;

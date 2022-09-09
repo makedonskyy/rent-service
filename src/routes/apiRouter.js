@@ -92,6 +92,14 @@ router.post('/login/owner', async (req, res) => {
   }
 });
 
+// router.get('/myapartments/update/:id', async (req, res) => {
+//   try {
+//     res.render('Layout');
+//   } catch (error) {
+//     console.error(error);
+//   }
+// })
+
 router.post('/apartform', async (req, res) => {
   try {
     const {
