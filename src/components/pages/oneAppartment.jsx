@@ -32,7 +32,7 @@ export default function OneApp({ oneAppartment }) {
             <p className="fs-5">{app?.description}</p>
           </div>
           <div className="w-75 p-3">
-            <p className="fs-4">Контакты владельца:</p>
+            <p className="fs-5">Контакты владельца:</p>
           </div>
           <div className="w-75 p-3">
             <p className="fs-5">{app?.Owner.name}</p>

@@ -51,7 +51,7 @@ router.get('/categories/houses/:id', async (req, res) => {
 router.get('/categories/rooms', async (req, res) => {
   const allRooms = await Appartment.findAll({
     where: { cathegoryId: 3 },
-    include: [{ Cathegory, include: [{ Owner, attributes: ['name', 'phone'] }] }],
+    include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }],
   });
   res.json(allRooms);
 });
@@ -61,7 +61,6 @@ router.get('/categories/rooms/:id', async (req, res) => {
   const oneRoom = await Appartment.findByPk(id, { include: [{ Cathegory, include: [{ Owner, attributes: ['name', 'phone'] }] }] });
   res.json(oneRoom);
 });
-
 
 router.post('/login/user', async (req, res) => {
   const { email, password } = req.body;

@@ -39,7 +39,6 @@ export default function OneApp({ oneRoom }) {
         <div className="w-75 p-3">
           <p className="fs-3">{room?.Owner.phone}</p>
         </div>
-        
 
       </>
       )}

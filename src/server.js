@@ -37,9 +37,9 @@ app.use(session(sessionConfig));
 app.use(async (req, res, next) => {
   const allAppartments = await Appartment.findAll({ where: { cathegoryId: 1 }, include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
   res.locals.allAppartment = allAppartments;
-  const allHouses = await Appartment.findAll({ where: { cathegoryId: 3 }, include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
+  const allHouses = await Appartment.findAll({ where: { cathegoryId: 2 }, include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
   res.locals.allHouses = allHouses;
-  const allRooms = await Appartment.findAll({ where: { cathegoryId: 2 }, include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
+  const allRooms = await Appartment.findAll({ where: { cathegoryId: 3 }, include: [Cathegory, { model: Owner, attributes: ['name', 'phone'] }] });
   res.locals.allHouses = allRooms;
   res.locals.path = req.originalUrl;
   res.locals.userName = req.session?.userName;
