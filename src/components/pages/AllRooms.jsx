@@ -5,7 +5,7 @@ export default function AllAppartments({ appartment }) {
   const [roomArray, setroomArray] = useState(appartment || null);
   useEffect(() => {
     if (!roomArray) {
-      fetch('/api/v1/categories/houses')
+      fetch('/api/v1/categories/rooms')
         .then((res) => res.json())
         .then((data) => setroomArray(data));
     }

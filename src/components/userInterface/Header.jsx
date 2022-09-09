@@ -16,9 +16,10 @@ export default function Header({ authState, setAuthState }) {
   let favorites;
   if (authState) {
     if (authState.ownerOrUser === 'user') {
-      favorites = (<a className="c-white nav-item nav-link" href="/favorites">Избранное</a>);
+      favorites = (<a className="link" href="/favorites"><button type="button" className="button-34">Избранное</button></a>);
     } else if (authState.ownerOrUser === 'owner') {
-      favorites = (<Link to="/myapartments" className="c-white nav-item nav-link">Мои объявления</Link>);
+
+      favorites = (<Link to="/myapartments" className="c-white nav-item nav-link"><button type="button" className="button-34">Мои объявления</button></Link>);
     } else favorites = (<></>);
   } else {
     favorites = (<></>);
@@ -41,13 +42,15 @@ export default function Header({ authState, setAuthState }) {
         <span className="navbar-toggler-icon" />
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+
         <div
           className="navbar-nav"
           style={{
             display: 'flex', alignItems: 'center',
           }}
         >
-          <Link to="/categories">Категории</Link>
+          <button type="button" className="button-34"><Link to="/categories">Категории</Link></button>
+
           {favorites}
         </div>
         <div className="login">
