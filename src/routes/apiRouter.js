@@ -15,7 +15,8 @@ router.post('/signup/user', async (req, res) => {
     });
     req.session.userId = currUser.id;
     req.session.userName = currUser.name;
-    res.sendStatus(200);
+    res.json({ name: currUser.name, description: currUser.description });
+    // res.sendStatus(200);
   } catch (error) {
     console.error(error);
   }
@@ -28,7 +29,8 @@ router.post('/login/user', async (req, res) => {
   if (compare) {
     req.session.userId = currUser.id;
     req.session.userEmail = currUser.email;
-    res.sendStatus(200);
+    res.json({ name: currUser.name, description: currUser.description });
+    // res.sendStatus(200);
     // res.json({ name: currUser.login });
   } else {
     res.sendStatus(401);
@@ -46,7 +48,8 @@ router.post('/signup/owner', async (req, res) => {
     });
     req.session.userId = currUser.id;
     req.session.userName = currUser.name;
-    res.sendStatus(200);
+    res.json({ name: currUser.name });
+    // res.sendStatus(200);
   } catch (error) {
     console.error(error);
   }
@@ -59,7 +62,8 @@ router.post('/login/owner', async (req, res) => {
   if (compare) {
     req.session.userId = currUser.id;
     req.session.userEmail = currUser.email;
-    res.sendStatus(200);
+    res.json({ name: currUser.name });
+    // res.sendStatus(200);
     // res.json({ name: currUser.login });
   } else {
     res.sendStatus(401);
