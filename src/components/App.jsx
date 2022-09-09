@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AddAppartment from './AddAppartment';
+import Categories from './pages/Categories';
 import Footer from './Footer';
 import Header from './Header';
 import Login from './login/Login';
@@ -9,8 +10,7 @@ import OwnerLogin from './login/OwnerLogin';
 import OwnerSignUp from './login/OwnerSignUp';
 import SignUp from './login/SignUp';
 import SignUpMain from './login/SignUpMain';
-// import Main from './pages/Main';
-import Categories from './pages/Categories';
+import Main from './pages/Main';
 import AllAppartments from './pages/allAppartments';
 import OneAppartment from './pages/oneAppartment';
 import AllHouses from './pages/AllHouses';
@@ -24,10 +24,9 @@ export default function App({
   const [authState, setAuthState] = useState('');
   return (
     <div>
-      <Header />
+      <Header authState={authState} setAuthState={setAuthState} />
       <Routes>
-        {/* <Route path="/" element={<Main />} /> */}
-        <Route path="/" element={<AddAppartment />} />
+        <Route path="/" element={<Main />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/appartments" element={<AllAppartments appartments={allAppartments} />} />
         <Route path="/categories/appartments/:appId" element={<OneAppartment oneAppartment={oneAppartment} />} />
@@ -41,10 +40,9 @@ export default function App({
         <Route path="/signup" element={<SignUpMain />} />
         <Route path="/signup/owner" element={<OwnerSignUp />} />
         <Route path="/signup/user" element={<SignUp />} />
-
+        <Route path="/apartform" element={<AddAppartment />} />
       </Routes>
       <Footer />
     </div>
-
   );
 }

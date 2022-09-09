@@ -41,7 +41,7 @@ export default function Header({ authState, setAuthState }) {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
-          <a className="c-white nav-item nav-link" href="/cathegories">Категории</a>
+          <Link to="/categories">Категории</Link>
           {favorites}
         </div>
         <div className="login">

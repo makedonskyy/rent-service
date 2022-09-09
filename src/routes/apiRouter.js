@@ -1,7 +1,9 @@
 import express from 'express';
 
 import bcrypt from 'bcrypt';
-import { User, Appartment, Owner } from '../db1/models';
+import {
+  User, Appartment, Cathegory, Owner,
+} from '../db1/models';
 
 const router = express.Router();
 
@@ -16,7 +18,8 @@ router.post('/signup/user', async (req, res) => {
     });
     req.session.userId = currUser.id;
     req.session.userName = currUser.name;
-    res.sendStatus(200);
+    res.json({ name: currUser.name, description: currUser.description });
+    // res.sendStatus(200);
   } catch (error) {
     console.error(error);
   }
@@ -29,6 +32,7 @@ router.get('/categories/appartments', async (req, res) => {
   res.json(allAppartments);
 });
 
+// { include: { Cathegory }
 router.get('/categories/appartments/:id', async (req, res) => {
   const { id } = req.params;
   const oneAppartment = await Appartment.findByPk(id);
@@ -67,7 +71,8 @@ router.post('/login/user', async (req, res) => {
   if (compare) {
     req.session.userId = currUser.id;
     req.session.userEmail = currUser.email;
-    res.sendStatus(200);
+    res.json({ name: currUser.name, description: currUser.description });
+    // res.sendStatus(200);
     // res.json({ name: currUser.login });
   } else {
     res.sendStatus(401);
@@ -85,7 +90,8 @@ router.post('/signup/owner', async (req, res) => {
     });
     req.session.userId = currUser.id;
     req.session.userName = currUser.name;
-    res.sendStatus(200);
+    res.json({ name: currUser.name });
+    // res.sendStatus(200);
   } catch (error) {
     console.error(error);
   }
@@ -98,14 +104,15 @@ router.post('/login/owner', async (req, res) => {
   if (compare) {
     req.session.userId = currUser.id;
     req.session.userEmail = currUser.email;
-    res.sendStatus(200);
+    res.json({ name: currUser.name });
+    // res.sendStatus(200);
     // res.json({ name: currUser.login });
   } else {
     res.sendStatus(401);
   }
 });
 
-router.post('/addAppartment', async (req, res) => {
+router.post('/apartform', async (req, res) => {
   try {
     const {
       cathegory, price, countOfRooms, address, description, image,

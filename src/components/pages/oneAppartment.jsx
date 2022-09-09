@@ -17,18 +17,18 @@ export default function OneApp({ oneAppartment }) {
           <div className="col-4">
             <img src={app?.image} className="card-img-top" alt="..." />
           </div>
-          <div className="col-2">
-            <h2>{app?.name}</h2>
+          <div className="w-75 p-4">
+            <p className="fs-4">{app?.name}</p>
           </div>
         </div>
-        <div className="row">
-          <h2>{`${app?.price} ₽/месяц`}</h2>
+        <div className="w-75 p-3">
+          <p className="fs-3">{`${app?.price} ₽/месяц`}</p>
         </div>
-        <div className="row">
-          <h2>{app?.address}</h2>
+        <div className="w-75 p-3">
+          <p className="fs-3">{app?.address}</p>
         </div>
-        <div className="row">
-          <h2>{app?.description}</h2>
+        <div className="w-75 p-3">
+          <p className="fs-3">{app?.description}</p>
         </div>
       </>
       )}

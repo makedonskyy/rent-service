@@ -132,4 +132,12 @@ route.get('/categories/rooms/:id', async (req, res) => {
   }
 });
 
+route.get('/apartform', async (req, res) => {
+  try {
+    res.render('Layout');
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 export default route;
