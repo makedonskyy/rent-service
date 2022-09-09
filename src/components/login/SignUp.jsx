@@ -20,6 +20,7 @@ export default function SignUp() {
       body: JSON.stringify(input),
     });
     if (response.ok) {
+      console.log(response);
       navigate('/');
     } else {
       // console.log('not authed');

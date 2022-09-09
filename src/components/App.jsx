@@ -24,7 +24,7 @@ export default function App({
   const [authState, setAuthState] = useState('');
   return (
     <div>
-      <Header />
+      <Header authState={authState} setAuthState={setAuthState} />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/categories" element={<Categories />} />
@@ -44,6 +44,5 @@ export default function App({
       </Routes>
       <Footer />
     </div>
-
   );
 }
